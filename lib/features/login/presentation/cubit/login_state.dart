@@ -1,6 +1,6 @@
 part of 'login_cubit.dart';
 
-@immutable
-sealed class LoginState {}
-
-final class LoginInitial extends LoginState {}
+@freezed
+class LoginState with _$LoginState {
+  const factory LoginState.initial() = _Initial;
+}
