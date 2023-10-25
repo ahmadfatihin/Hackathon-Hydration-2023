@@ -13,8 +13,7 @@ import 'package:hive_flutter/hive_flutter.dart' as _i3;
 import 'package:injectable/injectable.dart' as _i2;
 
 import '../../features/login/presentation/cubit/login_cubit.dart' as _i4;
-import '../../features/onboard/presentation/cubit/onboard_cubit.dart' as _i5;
-import 'register_module.dart' as _i6;
+import 'register_module.dart' as _i5;
 
 // initializes the registration of main-scope dependencies inside of GetIt
 Future<_i1.GetIt> $initGetIt(
@@ -33,8 +32,7 @@ Future<_i1.GetIt> $initGetIt(
     preResolve: true,
   );
   gh.factory<_i4.LoginCubit>(() => _i4.LoginCubit());
-  gh.singleton<_i5.OnboardCubit>(_i5.OnboardCubit());
   return getIt;
 }
 
-class _$RegisterModule extends _i6.RegisterModule {}
+class _$RegisterModule extends _i5.RegisterModule {}

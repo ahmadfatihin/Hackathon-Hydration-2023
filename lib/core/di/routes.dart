@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hackathon_hydration/features/login/presentation/pages/login_pages.dart';
-import 'package:hackathon_hydration/features/onboard/presentation/pages/onboard_page.dart';
+import 'package:hackathon_hydration/features/splash/presentation/pages/splash_page.dart';
 
 class RoutesConfig {
   static GoRouter appRouter =
-      GoRouter(initialLocation: onboard, routes: <GoRoute>[
+      GoRouter(initialLocation: splash, routes: <GoRoute>[
     GoRoute(
-      path: onboard,
-      builder: (ctx, state) => const OnboardPage(),
+      path: splash,
+      builder: (ctx, state) => const SplashPage(),
     ),
     GoRoute(
       path: login,
@@ -23,5 +23,5 @@ class RoutesConfig {
     ),
   ]);
   static String login = '/login';
-  static String onboard = '/onboard';
+  static String splash = '/splash';
 }

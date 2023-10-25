@@ -5,14 +5,14 @@ import 'package:hackathon_hydration/generated/assets.gen.dart';
 
 import '../../../../core/di/routes.dart';
 
-class OnboardPage extends StatefulWidget {
-  const OnboardPage({super.key});
+class SplashPage extends StatefulWidget {
+  const SplashPage({super.key});
 
   @override
-  State<OnboardPage> createState() => _OnboardPageState();
+  State<SplashPage> createState() => _SplashPageState();
 }
 
-class _OnboardPageState extends State<OnboardPage> {
+class _SplashPageState extends State<SplashPage> {
   late PageController controller;
   bool isAnimating = false;
 
