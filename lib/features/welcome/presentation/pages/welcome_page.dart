@@ -47,7 +47,7 @@ class WelcomePage extends StatelessWidget {
                                   style: TextStyles.text2XlXtraBold,
                                 ),
                                 Text(
-                                  "Your Weight is ${userData.height}",
+                                  "Your Weight is ${userData.weight}",
                                   style: TextStyles.text2XlXtraBold,
                                 ),
                                 Text(

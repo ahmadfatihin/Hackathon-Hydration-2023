@@ -6,6 +6,7 @@ import 'package:hackathon_hydration/core/di/routes.dart';
 import 'package:hackathon_hydration/core/ui/custom_loading_animation.dart';
 import 'package:hackathon_hydration/features/login/presentation/cubit/login_cubit.dart';
 import 'package:hackathon_hydration/features/login/presentation/widgets/login_form.dart';
+import 'package:hackathon_hydration/features/login/presentation/widgets/login_qr.dart';
 
 import '../../../../themes/pallets.dart';
 import '../../domain/entities/user_entity.dart';
@@ -68,7 +69,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ],
                     ),
-                    body: LoginForm()),
+                    body: LoginQrWidget()),
               ),
               Visibility(
                 visible:
