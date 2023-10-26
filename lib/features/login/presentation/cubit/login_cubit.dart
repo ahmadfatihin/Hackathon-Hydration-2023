@@ -20,6 +20,7 @@ class LoginCubit extends Cubit<LoginState> {
   Future<void> saveUserData({required UserData userData}) async {
     try {
       await _hiveService.put(LocalStorageKey.userData, userData.toString());
+      emit(const LoginState.success());
     } catch (e) {
       throw LocalStorageException(message: e.toString());
     }

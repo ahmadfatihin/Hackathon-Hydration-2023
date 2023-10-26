@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hackathon_hydration/features/login/presentation/pages/login_pages.dart';
 import 'package:hackathon_hydration/generated/assets.gen.dart';
+import 'package:hackathon_hydration/themes/pallets.dart';
 
 import '../../../../core/di/routes.dart';
 

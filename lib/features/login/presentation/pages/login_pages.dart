@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hackathon_hydration/core/di/routes.dart';
 import 'package:hackathon_hydration/features/login/presentation/cubit/login_cubit.dart';
 
+import '../../../../themes/pallets.dart';
 import '../../domain/entities/user_entity.dart';
 
 class LoginPage extends StatefulWidget {
@@ -41,53 +44,56 @@ class _LoginPageState extends State<LoginPage> {
     );
 
     GetIt.I<LoginCubit>().saveUserData(userData: userData);
-
-    GetIt.I<LoginCubit>().saveUserData(userData: userData);
-
-    debugPrint('Name: $name');
-    debugPrint('Height: $height');
-    debugPrint('Weight: $weight');
-    debugPrint('Age: $age');
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider.value(
       value: GetIt.I<LoginCubit>(),
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text('Login Screen'),
+      child: BlocListener<LoginCubit, LoginState>(
+        listener: (context, state) => state.mapOrNull(
+          success: (value) {
+            context.go(RoutesConfig.welcome);
+          },
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Form(
-            child: Column(
-              children: <Widget>[
-                TextFormField(
-                  controller: nameController,
-                  decoration: InputDecoration(labelText: 'Name'),
+        child: Container(
+          decoration: BoxDecoration(gradient: Pallet.gradient),
+          child: Scaffold(
+            appBar: AppBar(
+              title: const Text('Login Screen'),
+            ),
+            body: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Form(
+                child: Column(
+                  children: <Widget>[
+                    TextFormField(
+                      controller: nameController,
+                      decoration: const InputDecoration(labelText: 'Name'),
+                    ),
+                    TextFormField(
+                      controller: heightController,
+                      decoration: const InputDecoration(labelText: 'Height'),
+                      keyboardType: TextInputType.number,
+                    ),
+                    TextFormField(
+                      controller: weightController,
+                      decoration: const InputDecoration(labelText: 'Weight'),
+                      keyboardType: TextInputType.number,
+                    ),
+                    TextFormField(
+                      controller: ageController,
+                      decoration: const InputDecoration(labelText: 'Age'),
+                      keyboardType: TextInputType.number,
+                    ),
+                    const SizedBox(height: 20),
+                    ElevatedButton(
+                      onPressed: _submitForm,
+                      child: const Text("LET'S GO !!"),
+                    ),
+                  ],
                 ),
-                TextFormField(
-                  controller: heightController,
-                  decoration: InputDecoration(labelText: 'Height'),
-                  keyboardType: TextInputType.number,
-                ),
-                TextFormField(
-                  controller: weightController,
-                  decoration: InputDecoration(labelText: 'Weight'),
-                  keyboardType: TextInputType.number,
-                ),
-                TextFormField(
-                  controller: ageController,
-                  decoration: InputDecoration(labelText: 'Age'),
-                  keyboardType: TextInputType.number,
-                ),
-                SizedBox(height: 20),
-                ElevatedButton(
-                  onPressed: _submitForm,
-                  child: Text('Submit'),
-                ),
-              ],
+              ),
             ),
           ),
         ),
