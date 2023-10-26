@@ -15,7 +15,7 @@ class RoutesConfig {
       path: login,
       pageBuilder: (_, state) {
         return CustomTransitionPage(
-          child: LoginPage(),
+          child: const LoginPage(),
           transitionDuration: const Duration(milliseconds: 1800),
           transitionsBuilder: (_, animation, __, transitionBuilder) =>
               FadeTransition(opacity: animation, child: transitionBuilder),
