@@ -5,14 +5,24 @@ import 'package:hackathon_hydration/core/widget/button.dart';
 import 'package:hackathon_hydration/features/home/presentation/cubit/home_cubit.dart';
 import 'package:hackathon_hydration/generated/assets.gen.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    String name = 'Novi';
-    final cubit = GetIt.I<HomeCubit>();
+  State<HomePage> createState() => _HomePageState();
+}
 
+class _HomePageState extends State<HomePage> {
+  final cubit = GetIt.I<HomeCubit>();
+
+  @override
+  void initState() {
+    cubit.initData();
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return BlocProvider.value(
       value: cubit,
       child: BlocBuilder<HomeCubit, HomeState>(
@@ -28,7 +38,7 @@ class HomePage extends StatelessWidget {
                 icon: const Icon(Icons.settings),
               ),
               title: Text(
-                'Hello $name!',
+                'Hello ${state.name}!',
                 style: const TextStyle(fontWeight: FontWeight.bold),
               ),
               actions: [
@@ -78,7 +88,7 @@ class HomePage extends StatelessWidget {
                       ],
                     ),
                     Opacity(
-                      opacity: state.rain ? 0 : 1,
+                      opacity: state.doneForToday ? 0 : 1,
                       child: Padding(
                         padding: const EdgeInsets.only(bottom: 60),
                         child: AppButton(

@@ -36,7 +36,8 @@ Future<_i1.GetIt> $initGetIt(
   );
   gh.lazySingleton<_i4.HiveService>(
       () => _i4.HiveServiceImpl(hive: gh<_i3.Box<dynamic>>()));
-  gh.singleton<_i5.HomeCubit>(_i5.HomeCubit());
+  gh.singleton<_i5.HomeCubit>(
+      _i5.HomeCubit(hiveService: gh<_i4.HiveService>()));
   gh.singleton<_i6.LoginCubit>(
       _i6.LoginCubit(hiveService: gh<_i4.HiveService>()));
   gh.singleton<_i7.WelcomeCubit>(_i7.WelcomeCubit());

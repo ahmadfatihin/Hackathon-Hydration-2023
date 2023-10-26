@@ -16,23 +16,30 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$HomeState {
+  String get name => throw _privateConstructorUsedError;
   bool get rain => throw _privateConstructorUsedError;
+  bool get doneForToday => throw _privateConstructorUsedError;
   double get drinks => throw _privateConstructorUsedError;
   double get grassGreen => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(bool rain, double drinks, double grassGreen)
+    required TResult Function(String name, bool rain, bool doneForToday,
+            double drinks, double grassGreen)
         initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(bool rain, double drinks, double grassGreen)? initial,
+    TResult? Function(String name, bool rain, bool doneForToday, double drinks,
+            double grassGreen)?
+        initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool rain, double drinks, double grassGreen)? initial,
+    TResult Function(String name, bool rain, bool doneForToday, double drinks,
+            double grassGreen)?
+        initial,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -63,7 +70,12 @@ abstract class $HomeStateCopyWith<$Res> {
   factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) then) =
       _$HomeStateCopyWithImpl<$Res, HomeState>;
   @useResult
-  $Res call({bool rain, double drinks, double grassGreen});
+  $Res call(
+      {String name,
+      bool rain,
+      bool doneForToday,
+      double drinks,
+      double grassGreen});
 }
 
 /// @nodoc
@@ -79,14 +91,24 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? name = null,
     Object? rain = null,
+    Object? doneForToday = null,
     Object? drinks = null,
     Object? grassGreen = null,
   }) {
     return _then(_value.copyWith(
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
       rain: null == rain
           ? _value.rain
           : rain // ignore: cast_nullable_to_non_nullable
+              as bool,
+      doneForToday: null == doneForToday
+          ? _value.doneForToday
+          : doneForToday // ignore: cast_nullable_to_non_nullable
               as bool,
       drinks: null == drinks
           ? _value.drinks
@@ -108,7 +130,12 @@ abstract class _$$InitialImplCopyWith<$Res>
       __$$InitialImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool rain, double drinks, double grassGreen});
+  $Res call(
+      {String name,
+      bool rain,
+      bool doneForToday,
+      double drinks,
+      double grassGreen});
 }
 
 /// @nodoc
@@ -122,14 +149,24 @@ class __$$InitialImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? name = null,
     Object? rain = null,
+    Object? doneForToday = null,
     Object? drinks = null,
     Object? grassGreen = null,
   }) {
     return _then(_$InitialImpl(
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
       rain: null == rain
           ? _value.rain
           : rain // ignore: cast_nullable_to_non_nullable
+              as bool,
+      doneForToday: null == doneForToday
+          ? _value.doneForToday
+          : doneForToday // ignore: cast_nullable_to_non_nullable
               as bool,
       drinks: null == drinks
           ? _value.drinks
@@ -147,10 +184,19 @@ class __$$InitialImplCopyWithImpl<$Res>
 
 class _$InitialImpl implements _Initial {
   const _$InitialImpl(
-      {required this.rain, required this.drinks, required this.grassGreen});
+      {this.name = '',
+      required this.rain,
+      required this.doneForToday,
+      required this.drinks,
+      required this.grassGreen});
 
   @override
+  @JsonKey()
+  final String name;
+  @override
   final bool rain;
+  @override
+  final bool doneForToday;
   @override
   final double drinks;
   @override
@@ -158,7 +204,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'HomeState.initial(rain: $rain, drinks: $drinks, grassGreen: $grassGreen)';
+    return 'HomeState.initial(name: $name, rain: $rain, doneForToday: $doneForToday, drinks: $drinks, grassGreen: $grassGreen)';
   }
 
   @override
@@ -166,14 +212,18 @@ class _$InitialImpl implements _Initial {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InitialImpl &&
+            (identical(other.name, name) || other.name == name) &&
             (identical(other.rain, rain) || other.rain == rain) &&
+            (identical(other.doneForToday, doneForToday) ||
+                other.doneForToday == doneForToday) &&
             (identical(other.drinks, drinks) || other.drinks == drinks) &&
             (identical(other.grassGreen, grassGreen) ||
                 other.grassGreen == grassGreen));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, rain, drinks, grassGreen);
+  int get hashCode =>
+      Object.hash(runtimeType, name, rain, doneForToday, drinks, grassGreen);
 
   @JsonKey(ignore: true)
   @override
@@ -184,28 +234,33 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(bool rain, double drinks, double grassGreen)
+    required TResult Function(String name, bool rain, bool doneForToday,
+            double drinks, double grassGreen)
         initial,
   }) {
-    return initial(rain, drinks, grassGreen);
+    return initial(name, rain, doneForToday, drinks, grassGreen);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(bool rain, double drinks, double grassGreen)? initial,
+    TResult? Function(String name, bool rain, bool doneForToday, double drinks,
+            double grassGreen)?
+        initial,
   }) {
-    return initial?.call(rain, drinks, grassGreen);
+    return initial?.call(name, rain, doneForToday, drinks, grassGreen);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool rain, double drinks, double grassGreen)? initial,
+    TResult Function(String name, bool rain, bool doneForToday, double drinks,
+            double grassGreen)?
+        initial,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(rain, drinks, grassGreen);
+      return initial(name, rain, doneForToday, drinks, grassGreen);
     }
     return orElse();
   }
@@ -241,12 +296,18 @@ class _$InitialImpl implements _Initial {
 
 abstract class _Initial implements HomeState {
   const factory _Initial(
-      {required final bool rain,
+      {final String name,
+      required final bool rain,
+      required final bool doneForToday,
       required final double drinks,
       required final double grassGreen}) = _$InitialImpl;
 
   @override
+  String get name;
+  @override
   bool get rain;
+  @override
+  bool get doneForToday;
   @override
   double get drinks;
   @override

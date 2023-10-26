@@ -25,7 +25,7 @@ class LoginCubit extends Cubit<LoginState> {
       final data = userData.toJsonString();
       await _hiveService.put(LocalStorageKey.userData, data);
       log(data);
-      await Future.delayed(Duration(seconds: 3));
+      await Future.delayed(const Duration(seconds: 3));
       emit(const LoginState.success());
     } catch (e) {
       throw LocalStorageException(message: e.toString());
