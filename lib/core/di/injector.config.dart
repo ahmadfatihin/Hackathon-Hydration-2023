@@ -14,8 +14,9 @@ import 'package:injectable/injectable.dart' as _i2;
 
 import '../../features/home/presentation/cubit/home_cubit.dart' as _i5;
 import '../../features/login/presentation/cubit/login_cubit.dart' as _i6;
+import '../../features/welcome/presentation/cubit/welcome_cubit.dart' as _i7;
 import '../storage/hive_service.dart' as _i4;
-import 'register_module.dart' as _i7;
+import 'register_module.dart' as _i8;
 
 // initializes the registration of main-scope dependencies inside of GetIt
 Future<_i1.GetIt> $initGetIt(
@@ -38,7 +39,8 @@ Future<_i1.GetIt> $initGetIt(
   gh.singleton<_i5.HomeCubit>(_i5.HomeCubit());
   gh.singleton<_i6.LoginCubit>(
       _i6.LoginCubit(hiveService: gh<_i4.HiveService>()));
+  gh.singleton<_i7.WelcomeCubit>(_i7.WelcomeCubit());
   return getIt;
 }
 
-class _$RegisterModule extends _i7.RegisterModule {}
+class _$RegisterModule extends _i8.RegisterModule {}

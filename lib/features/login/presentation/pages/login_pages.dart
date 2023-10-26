@@ -1,5 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hackathon_hydration/core/di/routes.dart';
+import 'package:hackathon_hydration/core/ui/custom_loading_animation.dart';
+import 'package:hackathon_hydration/features/login/presentation/cubit/login_cubit.dart';
+import 'package:hackathon_hydration/features/login/presentation/widgets/login_form.dart';
 
+import '../../../../themes/pallets.dart';
 import '../../domain/entities/user_entity.dart';
 
 class LoginPage extends StatefulWidget {
@@ -25,10 +33,6 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void _submitForm() async {
-    final name = nameController.text;
-    final height = double.tryParse(heightController.text) ?? 0.0;
-    final weight = double.tryParse(weightController.text) ?? 0.0;
-    final age = int.tryParse(ageController.text) ?? 0;
     final userData = UserData(
       name: nameController.text,
       height: double.tryParse(heightController.text) ?? 0.0,
@@ -36,50 +40,44 @@ class _LoginPageState extends State<LoginPage> {
       age: int.tryParse(ageController.text) ?? 0,
     );
 
-    debugPrint('Name: $name');
-    debugPrint('Height: $height');
-    debugPrint('Weight: $weight');
-    debugPrint('Age: $age');
+    GetIt.I<LoginCubit>().saveUserData(userData: userData);
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Login Screen'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Form(
-          child: Column(
-            children: <Widget>[
-              TextFormField(
-                controller: nameController,
-                decoration: InputDecoration(labelText: 'Name'),
+    return BlocProvider.value(
+      value: GetIt.I<LoginCubit>(),
+      child: BlocListener<LoginCubit, LoginState>(
+        listener: (context, state) => state.mapOrNull(
+          success: (value) {
+            context.go(RoutesConfig.welcome);
+          },
+        ),
+        child: BlocBuilder<LoginCubit, LoginState>(builder: (context, state) {
+          return Stack(
+            children: [
+              Container(
+                decoration: BoxDecoration(gradient: Pallet.gradient),
+                child: Scaffold(
+                    appBar: AppBar(
+                      title: const Text('Login Screen'),
+                      actions: [
+                        ElevatedButton(
+                          onPressed: _submitForm,
+                          child: const Text("USE QR"),
+                        ),
+                      ],
+                    ),
+                    body: LoginForm()),
               ),
-              TextFormField(
-                controller: heightController,
-                decoration: InputDecoration(labelText: 'Height'),
-                keyboardType: TextInputType.number,
-              ),
-              TextFormField(
-                controller: weightController,
-                decoration: InputDecoration(labelText: 'Weight'),
-                keyboardType: TextInputType.number,
-              ),
-              TextFormField(
-                controller: ageController,
-                decoration: InputDecoration(labelText: 'Age'),
-                keyboardType: TextInputType.number,
-              ),
-              SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: _submitForm,
-                child: Text('Submit'),
+              Visibility(
+                visible:
+                    state.maybeWhen(orElse: () => false, loading: (_) => true),
+                child: const CustomLoadingAnimation(),
               ),
             ],
-          ),
-        ),
+          );
+        }),
       ),
     );
   }
