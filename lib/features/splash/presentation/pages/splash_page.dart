@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hackathon_hydration/features/login/presentation/pages/login_pages.dart';
 import 'package:hackathon_hydration/generated/assets.gen.dart';
 
 import '../../../../core/di/routes.dart';
@@ -36,7 +35,7 @@ class _SplashPageState extends State<SplashPage> {
 
   void navigateToLoginScreen() {
     // Use Navigator to navigate to the login screen
-    context.go(RoutesConfig.login);
+    context.go(RoutesConfig.home);
   }
 
   @override

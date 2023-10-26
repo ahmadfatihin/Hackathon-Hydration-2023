@@ -12,9 +12,10 @@ import 'package:get_it/get_it.dart' as _i1;
 import 'package:hive_flutter/hive_flutter.dart' as _i3;
 import 'package:injectable/injectable.dart' as _i2;
 
-import '../../features/login/presentation/cubit/login_cubit.dart' as _i5;
+import '../../features/home/presentation/cubit/home_cubit.dart' as _i5;
+import '../../features/login/presentation/cubit/login_cubit.dart' as _i6;
 import '../storage/hive_service.dart' as _i4;
-import 'register_module.dart' as _i6;
+import 'register_module.dart' as _i7;
 
 // initializes the registration of main-scope dependencies inside of GetIt
 Future<_i1.GetIt> $initGetIt(
@@ -34,9 +35,10 @@ Future<_i1.GetIt> $initGetIt(
   );
   gh.lazySingleton<_i4.HiveService>(
       () => _i4.HiveServiceImpl(hive: gh<_i3.Box<dynamic>>()));
-  gh.singleton<_i5.LoginCubit>(
-      _i5.LoginCubit(hiveService: gh<_i4.HiveService>()));
+  gh.singleton<_i5.HomeCubit>(_i5.HomeCubit());
+  gh.singleton<_i6.LoginCubit>(
+      _i6.LoginCubit(hiveService: gh<_i4.HiveService>()));
   return getIt;
 }
 
-class _$RegisterModule extends _i6.RegisterModule {}
+class _$RegisterModule extends _i7.RegisterModule {}
