@@ -42,10 +42,12 @@ class _LoginPageState extends State<LoginPage> {
 
     GetIt.I<LoginCubit>().saveUserData(userData: userData);
 
-    print('Name: $name');
-    print('Height: $height');
-    print('Weight: $weight');
-    print('Age: $age');
+    GetIt.I<LoginCubit>().saveUserData(userData: userData);
+
+    debugPrint('Name: $name');
+    debugPrint('Height: $height');
+    debugPrint('Weight: $weight');
+    debugPrint('Age: $age');
   }
 
   @override
