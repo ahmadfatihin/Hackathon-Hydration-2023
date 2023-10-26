@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
@@ -14,10 +15,16 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final cubit = GetIt.I<HomeCubit>();
+  CollectionReference reference =
+      FirebaseFirestore.instance.collection('waterhoarder');
 
   @override
   void initState() {
     cubit.initData();
+    reference.snapshots().listen((querySnapshot) {
+      debugPrint('changes: ${querySnapshot.docs.first.data()}');
+      cubit.drink();
+    });
     super.initState();
   }
 

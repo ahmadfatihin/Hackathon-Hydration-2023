@@ -1,4 +1,4 @@
-package com.example.hackathon_hydration
+package io.wolkk.waterhoarder
 
 import io.flutter.embedding.android.FlutterActivity
 
