@@ -16,31 +16,36 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$LoginState {
+  LoginType? get loginType => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(UserData userData) loaded,
-    required TResult Function() success,
+    required TResult Function(LoginType? loginType) initial,
+    required TResult Function(LoginType? loginType) loading,
+    required TResult Function(UserData userData, LoginType? loginType) loaded,
+    required TResult Function(LoginType? loginType) success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(UserData userData)? loaded,
-    TResult? Function()? success,
+    TResult? Function(LoginType? loginType)? initial,
+    TResult? Function(LoginType? loginType)? loading,
+    TResult? Function(UserData userData, LoginType? loginType)? loaded,
+    TResult? Function(LoginType? loginType)? success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(UserData userData)? loaded,
-    TResult Function()? success,
+    TResult Function(LoginType? loginType)? initial,
+    TResult Function(LoginType? loginType)? loading,
+    TResult Function(UserData userData, LoginType? loginType)? loaded,
+    TResult Function(LoginType? loginType)? success,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Success value) success,
   }) =>
@@ -48,6 +53,7 @@ mixin _$LoginState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Success value)? success,
   }) =>
@@ -55,10 +61,15 @@ mixin _$LoginState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Success value)? success,
     required TResult orElse(),
   }) =>
+      throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $LoginStateCopyWith<LoginState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -67,6 +78,8 @@ abstract class $LoginStateCopyWith<$Res> {
   factory $LoginStateCopyWith(
           LoginState value, $Res Function(LoginState) then) =
       _$LoginStateCopyWithImpl<$Res, LoginState>;
+  @useResult
+  $Res call({LoginType? loginType});
 }
 
 /// @nodoc
@@ -78,13 +91,30 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? loginType = freezed,
+  }) {
+    return _then(_value.copyWith(
+      loginType: freezed == loginType
+          ? _value.loginType
+          : loginType // ignore: cast_nullable_to_non_nullable
+              as LoginType?,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$InitialImplCopyWith<$Res> {
+abstract class _$$InitialImplCopyWith<$Res>
+    implements $LoginStateCopyWith<$Res> {
   factory _$$InitialImplCopyWith(
           _$InitialImpl value, $Res Function(_$InitialImpl) then) =
       __$$InitialImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({LoginType? loginType});
 }
 
 /// @nodoc
@@ -94,57 +124,85 @@ class __$$InitialImplCopyWithImpl<$Res>
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? loginType = freezed,
+  }) {
+    return _then(_$InitialImpl(
+      loginType: freezed == loginType
+          ? _value.loginType
+          : loginType // ignore: cast_nullable_to_non_nullable
+              as LoginType?,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$InitialImpl implements _Initial {
-  const _$InitialImpl();
+  const _$InitialImpl({this.loginType});
+
+  @override
+  final LoginType? loginType;
 
   @override
   String toString() {
-    return 'LoginState.initial()';
+    return 'LoginState.initial(loginType: $loginType)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$InitialImpl &&
+            (identical(other.loginType, loginType) ||
+                other.loginType == loginType));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, loginType);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
+      __$$InitialImplCopyWithImpl<_$InitialImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(UserData userData) loaded,
-    required TResult Function() success,
+    required TResult Function(LoginType? loginType) initial,
+    required TResult Function(LoginType? loginType) loading,
+    required TResult Function(UserData userData, LoginType? loginType) loaded,
+    required TResult Function(LoginType? loginType) success,
   }) {
-    return initial();
+    return initial(loginType);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(UserData userData)? loaded,
-    TResult? Function()? success,
+    TResult? Function(LoginType? loginType)? initial,
+    TResult? Function(LoginType? loginType)? loading,
+    TResult? Function(UserData userData, LoginType? loginType)? loaded,
+    TResult? Function(LoginType? loginType)? success,
   }) {
-    return initial?.call();
+    return initial?.call(loginType);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(UserData userData)? loaded,
-    TResult Function()? success,
+    TResult Function(LoginType? loginType)? initial,
+    TResult Function(LoginType? loginType)? loading,
+    TResult Function(UserData userData, LoginType? loginType)? loaded,
+    TResult Function(LoginType? loginType)? success,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial();
+      return initial(loginType);
     }
     return orElse();
   }
@@ -153,6 +211,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Success value) success,
   }) {
@@ -163,6 +222,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Success value)? success,
   }) {
@@ -173,6 +233,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Success value)? success,
     required TResult orElse(),
@@ -185,16 +246,175 @@ class _$InitialImpl implements _Initial {
 }
 
 abstract class _Initial implements LoginState {
-  const factory _Initial() = _$InitialImpl;
+  const factory _Initial({final LoginType? loginType}) = _$InitialImpl;
+
+  @override
+  LoginType? get loginType;
+  @override
+  @JsonKey(ignore: true)
+  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$LoadedImplCopyWith<$Res> {
+abstract class _$$LoadingImplCopyWith<$Res>
+    implements $LoginStateCopyWith<$Res> {
+  factory _$$LoadingImplCopyWith(
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({LoginType? loginType});
+}
+
+/// @nodoc
+class __$$LoadingImplCopyWithImpl<$Res>
+    extends _$LoginStateCopyWithImpl<$Res, _$LoadingImpl>
+    implements _$$LoadingImplCopyWith<$Res> {
+  __$$LoadingImplCopyWithImpl(
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? loginType = freezed,
+  }) {
+    return _then(_$LoadingImpl(
+      loginType: freezed == loginType
+          ? _value.loginType
+          : loginType // ignore: cast_nullable_to_non_nullable
+              as LoginType?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$LoadingImpl implements _Loading {
+  const _$LoadingImpl({this.loginType});
+
+  @override
+  final LoginType? loginType;
+
+  @override
+  String toString() {
+    return 'LoginState.loading(loginType: $loginType)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoadingImpl &&
+            (identical(other.loginType, loginType) ||
+                other.loginType == loginType));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, loginType);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoadingImplCopyWith<_$LoadingImpl> get copyWith =>
+      __$$LoadingImplCopyWithImpl<_$LoadingImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(LoginType? loginType) initial,
+    required TResult Function(LoginType? loginType) loading,
+    required TResult Function(UserData userData, LoginType? loginType) loaded,
+    required TResult Function(LoginType? loginType) success,
+  }) {
+    return loading(loginType);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(LoginType? loginType)? initial,
+    TResult? Function(LoginType? loginType)? loading,
+    TResult? Function(UserData userData, LoginType? loginType)? loaded,
+    TResult? Function(LoginType? loginType)? success,
+  }) {
+    return loading?.call(loginType);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(LoginType? loginType)? initial,
+    TResult Function(LoginType? loginType)? loading,
+    TResult Function(UserData userData, LoginType? loginType)? loaded,
+    TResult Function(LoginType? loginType)? success,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading(loginType);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Success value) success,
+  }) {
+    return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Success value)? success,
+  }) {
+    return loading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Success value)? success,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Loading implements LoginState {
+  const factory _Loading({final LoginType? loginType}) = _$LoadingImpl;
+
+  @override
+  LoginType? get loginType;
+  @override
+  @JsonKey(ignore: true)
+  _$$LoadingImplCopyWith<_$LoadingImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$LoadedImplCopyWith<$Res>
+    implements $LoginStateCopyWith<$Res> {
   factory _$$LoadedImplCopyWith(
           _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
       __$$LoadedImplCopyWithImpl<$Res>;
+  @override
   @useResult
-  $Res call({UserData userData});
+  $Res call({UserData userData, LoginType? loginType});
 
   $UserDataCopyWith<$Res> get userData;
 }
@@ -211,12 +431,17 @@ class __$$LoadedImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? userData = null,
+    Object? loginType = freezed,
   }) {
     return _then(_$LoadedImpl(
       userData: null == userData
           ? _value.userData
           : userData // ignore: cast_nullable_to_non_nullable
               as UserData,
+      loginType: freezed == loginType
+          ? _value.loginType
+          : loginType // ignore: cast_nullable_to_non_nullable
+              as LoginType?,
     ));
   }
 
@@ -232,14 +457,16 @@ class __$$LoadedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadedImpl implements _Loaded {
-  const _$LoadedImpl({required this.userData});
+  const _$LoadedImpl({required this.userData, this.loginType});
 
   @override
   final UserData userData;
+  @override
+  final LoginType? loginType;
 
   @override
   String toString() {
-    return 'LoginState.loaded(userData: $userData)';
+    return 'LoginState.loaded(userData: $userData, loginType: $loginType)';
   }
 
   @override
@@ -248,11 +475,13 @@ class _$LoadedImpl implements _Loaded {
         (other.runtimeType == runtimeType &&
             other is _$LoadedImpl &&
             (identical(other.userData, userData) ||
-                other.userData == userData));
+                other.userData == userData) &&
+            (identical(other.loginType, loginType) ||
+                other.loginType == loginType));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, userData);
+  int get hashCode => Object.hash(runtimeType, userData, loginType);
 
   @JsonKey(ignore: true)
   @override
@@ -263,33 +492,36 @@ class _$LoadedImpl implements _Loaded {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(UserData userData) loaded,
-    required TResult Function() success,
+    required TResult Function(LoginType? loginType) initial,
+    required TResult Function(LoginType? loginType) loading,
+    required TResult Function(UserData userData, LoginType? loginType) loaded,
+    required TResult Function(LoginType? loginType) success,
   }) {
-    return loaded(userData);
+    return loaded(userData, loginType);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(UserData userData)? loaded,
-    TResult? Function()? success,
+    TResult? Function(LoginType? loginType)? initial,
+    TResult? Function(LoginType? loginType)? loading,
+    TResult? Function(UserData userData, LoginType? loginType)? loaded,
+    TResult? Function(LoginType? loginType)? success,
   }) {
-    return loaded?.call(userData);
+    return loaded?.call(userData, loginType);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(UserData userData)? loaded,
-    TResult Function()? success,
+    TResult Function(LoginType? loginType)? initial,
+    TResult Function(LoginType? loginType)? loading,
+    TResult Function(UserData userData, LoginType? loginType)? loaded,
+    TResult Function(LoginType? loginType)? success,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(userData);
+      return loaded(userData, loginType);
     }
     return orElse();
   }
@@ -298,6 +530,7 @@ class _$LoadedImpl implements _Loaded {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Success value) success,
   }) {
@@ -308,6 +541,7 @@ class _$LoadedImpl implements _Loaded {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Success value)? success,
   }) {
@@ -318,6 +552,7 @@ class _$LoadedImpl implements _Loaded {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Success value)? success,
     required TResult orElse(),
@@ -330,19 +565,28 @@ class _$LoadedImpl implements _Loaded {
 }
 
 abstract class _Loaded implements LoginState {
-  const factory _Loaded({required final UserData userData}) = _$LoadedImpl;
+  const factory _Loaded(
+      {required final UserData userData,
+      final LoginType? loginType}) = _$LoadedImpl;
 
   UserData get userData;
+  @override
+  LoginType? get loginType;
+  @override
   @JsonKey(ignore: true)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$SuccessImplCopyWith<$Res> {
+abstract class _$$SuccessImplCopyWith<$Res>
+    implements $LoginStateCopyWith<$Res> {
   factory _$$SuccessImplCopyWith(
           _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
       __$$SuccessImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({LoginType? loginType});
 }
 
 /// @nodoc
@@ -352,57 +596,85 @@ class __$$SuccessImplCopyWithImpl<$Res>
   __$$SuccessImplCopyWithImpl(
       _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? loginType = freezed,
+  }) {
+    return _then(_$SuccessImpl(
+      loginType: freezed == loginType
+          ? _value.loginType
+          : loginType // ignore: cast_nullable_to_non_nullable
+              as LoginType?,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$SuccessImpl implements _Success {
-  const _$SuccessImpl();
+  const _$SuccessImpl({this.loginType});
+
+  @override
+  final LoginType? loginType;
 
   @override
   String toString() {
-    return 'LoginState.success()';
+    return 'LoginState.success(loginType: $loginType)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$SuccessImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$SuccessImpl &&
+            (identical(other.loginType, loginType) ||
+                other.loginType == loginType));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, loginType);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
+      __$$SuccessImplCopyWithImpl<_$SuccessImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(UserData userData) loaded,
-    required TResult Function() success,
+    required TResult Function(LoginType? loginType) initial,
+    required TResult Function(LoginType? loginType) loading,
+    required TResult Function(UserData userData, LoginType? loginType) loaded,
+    required TResult Function(LoginType? loginType) success,
   }) {
-    return success();
+    return success(loginType);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(UserData userData)? loaded,
-    TResult? Function()? success,
+    TResult? Function(LoginType? loginType)? initial,
+    TResult? Function(LoginType? loginType)? loading,
+    TResult? Function(UserData userData, LoginType? loginType)? loaded,
+    TResult? Function(LoginType? loginType)? success,
   }) {
-    return success?.call();
+    return success?.call(loginType);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(UserData userData)? loaded,
-    TResult Function()? success,
+    TResult Function(LoginType? loginType)? initial,
+    TResult Function(LoginType? loginType)? loading,
+    TResult Function(UserData userData, LoginType? loginType)? loaded,
+    TResult Function(LoginType? loginType)? success,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success();
+      return success(loginType);
     }
     return orElse();
   }
@@ -411,6 +683,7 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Success value) success,
   }) {
@@ -421,6 +694,7 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Success value)? success,
   }) {
@@ -431,6 +705,7 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Success value)? success,
     required TResult orElse(),
@@ -443,5 +718,12 @@ class _$SuccessImpl implements _Success {
 }
 
 abstract class _Success implements LoginState {
-  const factory _Success() = _$SuccessImpl;
+  const factory _Success({final LoginType? loginType}) = _$SuccessImpl;
+
+  @override
+  LoginType? get loginType;
+  @override
+  @JsonKey(ignore: true)
+  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

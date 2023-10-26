@@ -21,9 +21,11 @@ class LoginCubit extends Cubit<LoginState> {
 
   Future<void> saveUserData({required UserData userData}) async {
     try {
-      final data = userData.toJson().toString();
+      emit(const LoginState.loading());
+      final data = userData.toJsonString();
       await _hiveService.put(LocalStorageKey.userData, data);
-      log(data.toString());
+      log(data);
+      await Future.delayed(Duration(seconds: 3));
       emit(const LoginState.success());
     } catch (e) {
       throw LocalStorageException(message: e.toString());
@@ -35,7 +37,9 @@ class LoginCubit extends Cubit<LoginState> {
       final String? userDataString =
           await _hiveService.get(LocalStorageKey.userData);
       if (userDataString != null) {
+        log(userDataString);
         final userData = UserDataExtensions.fromString(userDataString);
+        log(userData.toString());
         emit(LoginState.loaded(userData: userData));
       }
     } catch (e) {

@@ -8,7 +8,7 @@ class TextStyles {
   static TextStyle get defaultStyle => GoogleFonts.poppins(
         fontStyle: FontStyle.normal,
         fontWeight: FontWeight.normal,
-        color: Pallet.textDark,
+        color: Pallet.textLight,
       );
 
   /// Font Size 10 Default
