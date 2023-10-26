@@ -18,7 +18,7 @@ class Pallet {
   static Color get process => const Color(0xFFB9792A);
 
   static LinearGradient get gradient => const LinearGradient(
-        colors: [Color(0xFF47B8C5), Color(0xFF70E7F4)],
+        colors: [Color(0xFF47B8C5), Color(0xFF5b8bdf)],
         begin: Alignment.topLeft,
         end: Alignment.bottomRight,
       );

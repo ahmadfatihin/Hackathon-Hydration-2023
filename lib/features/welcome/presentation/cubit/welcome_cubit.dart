@@ -7,5 +7,5 @@ part 'welcome_cubit.freezed.dart';
 
 @singleton
 class WelcomeCubit extends Cubit<WelcomeState> {
-  WelcomeCubit() : super(WelcomeState.initial());
+  WelcomeCubit() : super(const WelcomeState.initial());
 }

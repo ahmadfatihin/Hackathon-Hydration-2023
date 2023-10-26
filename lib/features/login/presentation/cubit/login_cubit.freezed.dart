@@ -19,18 +19,21 @@ mixin _$LoginState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function(UserData userData) loaded,
     required TResult Function() success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function(UserData userData)? loaded,
     TResult? Function()? success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function(UserData userData)? loaded,
     TResult Function()? success,
     required TResult orElse(),
   }) =>
@@ -38,18 +41,21 @@ mixin _$LoginState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_Loaded value) loaded,
     required TResult Function(_Success value) success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Success value)? success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_Loaded value)? loaded,
     TResult Function(_Success value)? success,
     required TResult orElse(),
   }) =>
@@ -113,6 +119,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function(UserData userData) loaded,
     required TResult Function() success,
   }) {
     return initial();
@@ -122,6 +129,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function(UserData userData)? loaded,
     TResult? Function()? success,
   }) {
     return initial?.call();
@@ -131,6 +139,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function(UserData userData)? loaded,
     TResult Function()? success,
     required TResult orElse(),
   }) {
@@ -144,6 +153,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_Loaded value) loaded,
     required TResult Function(_Success value) success,
   }) {
     return initial(this);
@@ -153,6 +163,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Success value)? success,
   }) {
     return initial?.call(this);
@@ -162,6 +173,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_Loaded value)? loaded,
     TResult Function(_Success value)? success,
     required TResult orElse(),
   }) {
@@ -174,6 +186,156 @@ class _$InitialImpl implements _Initial {
 
 abstract class _Initial implements LoginState {
   const factory _Initial() = _$InitialImpl;
+}
+
+/// @nodoc
+abstract class _$$LoadedImplCopyWith<$Res> {
+  factory _$$LoadedImplCopyWith(
+          _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
+      __$$LoadedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({UserData userData});
+
+  $UserDataCopyWith<$Res> get userData;
+}
+
+/// @nodoc
+class __$$LoadedImplCopyWithImpl<$Res>
+    extends _$LoginStateCopyWithImpl<$Res, _$LoadedImpl>
+    implements _$$LoadedImplCopyWith<$Res> {
+  __$$LoadedImplCopyWithImpl(
+      _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? userData = null,
+  }) {
+    return _then(_$LoadedImpl(
+      userData: null == userData
+          ? _value.userData
+          : userData // ignore: cast_nullable_to_non_nullable
+              as UserData,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $UserDataCopyWith<$Res> get userData {
+    return $UserDataCopyWith<$Res>(_value.userData, (value) {
+      return _then(_value.copyWith(userData: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$LoadedImpl implements _Loaded {
+  const _$LoadedImpl({required this.userData});
+
+  @override
+  final UserData userData;
+
+  @override
+  String toString() {
+    return 'LoginState.loaded(userData: $userData)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoadedImpl &&
+            (identical(other.userData, userData) ||
+                other.userData == userData));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, userData);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
+      __$$LoadedImplCopyWithImpl<_$LoadedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(UserData userData) loaded,
+    required TResult Function() success,
+  }) {
+    return loaded(userData);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(UserData userData)? loaded,
+    TResult? Function()? success,
+  }) {
+    return loaded?.call(userData);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(UserData userData)? loaded,
+    TResult Function()? success,
+    required TResult orElse(),
+  }) {
+    if (loaded != null) {
+      return loaded(userData);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Success value) success,
+  }) {
+    return loaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Success value)? success,
+  }) {
+    return loaded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Success value)? success,
+    required TResult orElse(),
+  }) {
+    if (loaded != null) {
+      return loaded(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Loaded implements LoginState {
+  const factory _Loaded({required final UserData userData}) = _$LoadedImpl;
+
+  UserData get userData;
+  @JsonKey(ignore: true)
+  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -215,6 +377,7 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function(UserData userData) loaded,
     required TResult Function() success,
   }) {
     return success();
@@ -224,6 +387,7 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function(UserData userData)? loaded,
     TResult? Function()? success,
   }) {
     return success?.call();
@@ -233,6 +397,7 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function(UserData userData)? loaded,
     TResult Function()? success,
     required TResult orElse(),
   }) {
@@ -246,6 +411,7 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_Loaded value) loaded,
     required TResult Function(_Success value) success,
   }) {
     return success(this);
@@ -255,6 +421,7 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Success value)? success,
   }) {
     return success?.call(this);
@@ -264,6 +431,7 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_Loaded value)? loaded,
     TResult Function(_Success value)? success,
     required TResult orElse(),
   }) {
