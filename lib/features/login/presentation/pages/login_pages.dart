@@ -36,10 +36,10 @@ class _LoginPageState extends State<LoginPage> {
       age: int.tryParse(ageController.text) ?? 0,
     );
 
-    print('Name: $name');
-    print('Height: $height');
-    print('Weight: $weight');
-    print('Age: $age');
+    debugPrint('Name: $name');
+    debugPrint('Height: $height');
+    debugPrint('Weight: $weight');
+    debugPrint('Age: $age');
   }
 
   @override
