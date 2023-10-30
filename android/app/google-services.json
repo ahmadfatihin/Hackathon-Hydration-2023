@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "102108128027",
+    "project_id": "water-hoarder",
+    "storage_bucket": "water-hoarder.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:102108128027:android:d97959738ca301cd3269be",
+        "android_client_info": {
+          "package_name": "io.wolkk.waterhoarder"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAP-ReNkLMlXUCt8Irgvpo1iOchrn1MAc4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  
+  "configuration_version": "1"
+}
